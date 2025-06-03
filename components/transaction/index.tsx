@@ -64,6 +64,16 @@ const TransactionTable: React.FC<TransactionInput> = ({
       scroll: false,
     });
   };
+  const handleFilterChange = (status: string) => {
+    const payload = {
+      ...structuredClone(searchParams),
+      status: status,
+    };
+    const params = new URLSearchParams(payload);
+    router.push(`/transactions?${params.toString()}`, {
+      scroll: false,
+    });
+  }
 
   const refetch = () => {
     router.refresh();
@@ -135,7 +145,29 @@ const TransactionTable: React.FC<TransactionInput> = ({
           </div>
         ) : (
           <>
-            <Export onExport={handleExport} />
+            <div className="flex justify-between mb-4">
+
+              <Export onExport={handleExport} />
+              {/* select with options like all, completed, pending */}
+              <div className="w-full max-w-xs ">
+                <label
+                  htmlFor="status"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Filter by Status
+                </label>
+                <select
+                  id="status"
+                  name="status"
+                  onChange={(e) => handleFilterChange(e.target.value)}
+                  className="block w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-orange-400 text-sm"
+                >
+                  <option value="">All</option>
+                  <option value="completed">Completed</option>
+                  <option value="pending">Pending</option>
+                </select>
+              </div>
+            </div>
             <DataTableBase
               columns={columns}
               data={transactions}
