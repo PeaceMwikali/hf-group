@@ -123,9 +123,9 @@ const TransactionTable: React.FC<TransactionInput> = ({
   };
 
   return (
-    <div className=" bg-white px-5 pt-6 pb-2.5 shadow-default sm:px-7.5 xl:pb-1 min-h-screen">
+    <div className="border border-gray-200 p-4 bg-white rounded-lg shadow-md">
       <div className="mb-7.5 flex items-center justify-between">
-        <h5 className="text-xl font-bold">Transactions</h5>
+        <h5 className="text-xl font-bold text-black uppercase p-3">Transactions</h5>
       </div>
 
       <div className="flex flex-col">

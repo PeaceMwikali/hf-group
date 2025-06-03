@@ -30,7 +30,7 @@ const TransactionPage: React.FC<{
   const transaction: TransactionInterface = response.data;
 
   return (
-    <div className="min-h-screen bg-white flex justify-center items-center">
+    <div className=" bg-white flex justify-center items-center">
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
           <div className="p-6">
@@ -62,7 +62,7 @@ const TransactionPage: React.FC<{
               <div className="flex items-center justify-between border-b pb-4">
                 <span className="text-gray-600">Amount</span>
                 <span className="font-medium text-gray-900">
-                  ${transaction.amount.toFixed(2)}
+                  {transaction.amount.toFixed(2)}
                 </span>
               </div>
 

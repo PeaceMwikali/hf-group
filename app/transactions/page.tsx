@@ -15,7 +15,6 @@ const TransactionsPage = async ({ searchParams }: PROP) => {
   }
   const page = params.page ? parseInt(params.page as string) : 1;
   const limit = params.limit ? parseInt(params.limit as string) : 10;
-  // curl --location 'http://209.38.167.19:3001/api/transactions?pageNo=0&pageSize=10&sortBy=id&sortDirection=desc'
   const response = await axios.get(`${process.env.url}transactions`, {
     params: {
       pageNo: page - 1,
@@ -32,7 +31,7 @@ const TransactionsPage = async ({ searchParams }: PROP) => {
   }
 
   return (
-    <main className="min-h-screen bg-white text-black ">
+    <div>
       <TransactionTable
         transactions={response.data.data.content}
         page={page}
@@ -41,7 +40,7 @@ const TransactionsPage = async ({ searchParams }: PROP) => {
         searchParams={params}
       />
       {/* Add your transaction components or logic here */}
-    </main>
+    </div>
   );
 };
 
